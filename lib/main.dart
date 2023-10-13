@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -39,7 +40,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Valor
-            GetBuilder<ValueController>(
+            GetX<ValueController>(
               init: valueController,
               builder: (control) {
                 return Text('Valor definido: ${control.definedValue}');
@@ -47,15 +48,18 @@ class HomePage extends StatelessWidget {
             ),
 
             // Campo
-            TextField(
-              controller: textController,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 30),
+              child: TextField(
+                controller: textController,
+              ),
             ),
 
             // Botão
-            GetBuilder<ValueController>(
+            GetX<ValueController>(
               init: valueController,
               builder: (control) {
-                return control.isLoading
+                return control.isLoading.value
                     ? const CircularProgressIndicator()
                     : ElevatedButton(
                         onPressed: () {
