@@ -40,10 +40,9 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Valor
-            GetX<ValueController>(
-              init: valueController,
-              builder: (control) {
-                return Text('Valor definido: ${control.definedValue}');
+            Obx(
+              () {
+                return Text('Valor definido: ${valueController.definedValue}');
               },
             ),
 
@@ -56,10 +55,9 @@ class HomePage extends StatelessWidget {
             ),
 
             // Botão
-            GetX<ValueController>(
-              init: valueController,
-              builder: (control) {
-                return control.isLoading.value
+            Obx(
+              () {
+                return valueController.isLoading.value
                     ? const CircularProgressIndicator()
                     : ElevatedButton(
                         onPressed: () {
