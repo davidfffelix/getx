@@ -39,22 +39,17 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Valor
             Obx(
               () {
                 return Text('Valor definido: ${valueController.definedValue}');
               },
             ),
-
-            // Campo
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 30),
               child: TextField(
                 controller: textController,
               ),
             ),
-
-            // Botão
             Obx(
               () {
                 return valueController.isLoading.value
